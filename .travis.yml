@@ -23,4 +23,4 @@ before_install:
  - chmod +x gradlew
 
  script:
- ./gradlew connectedCheck --info -PdisablePreDex
+  - ./gradlew connectedCheck --info -PdisablePreDex
