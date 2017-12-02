@@ -1,5 +1,4 @@
 language: android
-sudo: required
 jdk: oraclejdk8
 
 env:
@@ -23,19 +22,6 @@ android:
 before_script:
 before_install:
  - chmod +x gradlew
-  - echo y | android update sdk --no-ui --all --filter extra-android-m2repository
-  - echo y | android update sdk --no-ui --all --filter extra-android-support
-  - echo y | android update sdk --no-ui --all --filter "android-$ANDROID_EMULATOR_API_LEVEL"
-  - echo y | android update sdk --no-ui --all --filter build-tools-25.0.2
-  - echo y | android update sdk --no-ui --all --filter "sys-img-armeabi-v7a-android-$ANDROID_EMULATOR_API_LEVEL"
-  - echo no | android create avd --force -n test -t "android-$ANDROID_EMULATOR_API_LEVEL" --abi armeabi-v7a
 
-script:
-  - ./gradlew build lint test assembleAndroidTest -PdisablePreDex;
-  - android-wait-for-emulator
-  # Unlock the device
-  - adb shell input keyevent 82
-  # Avoid having it lock itself again.
-  - adb shell svc power stayon true
-  # Make gradle output info-level logging, so the tests do not timeout
-  - ./gradlew connectedCheck --info -PdisablePreDex;
+ script:
+ ./gradlew connectedCheck --info -PdisablePreDex
