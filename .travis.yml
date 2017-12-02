@@ -19,7 +19,6 @@ android:
   licenses:
     - 'android-sdk-license-.+'
 
-before_script:
 before_install:
  - chmod +x gradlew
 
