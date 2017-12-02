@@ -23,4 +23,4 @@ before_install:
  - chmod +x gradlew
 
 script:
-- "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
+- "./gradlew build --stacktrace"
